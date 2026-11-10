@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieVerse - Movie Review System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🎬 MovieVerse</h1>
+    <p>Discover Movies. Share Reviews. Rate Your Favourites.</p>
+</header>
+
+<nav>
+    <button onclick="showSection('dashboard')">Dashboard</button>
+    <button onclick="showSection('movies')">Movies</button>
+    <button onclick="showSection('viewers')">Viewers</button>
+    <button onclick="showSection('reviews')">Reviews</button>
+</nav>
+
+<main>
+
+<section id="dashboard" class="section">
+    <h2>Dashboard</h2>
+
+    <div class="stats">
+        <div class="stat">
+            <h3 id="movieCount">0</h3>
+            <p>Total Movies</p>
+        </div>
+
+        <div class="stat">
+            <h3 id="viewerCount">0</h3>
+            <p>Registered Viewers</p>
+        </div>
+
+        <div class="stat">
+            <h3 id="reviewCount">0</h3>
+            <p>Total Reviews</p>
+        </div>
+
+        <div class="stat">
+            <h3 id="averageRating">0</h3>
+            <p>Average Rating</p>
+        </div>
+    </div>
+
+    <h2>Welcome to MovieVerse!</h2>
+    <p>Explore movies and share your opinions with the community.</p>
+</section>
+
+
+<section id="movies" class="section hidden">
+
+    <h2>Movie Management</h2>
+
+    <div class="form">
+        <h3>Add Movie</h3>
+
+        <input id="movieTitle" placeholder="Movie Title">
+        <input id="movieYear" type="number" placeholder="Release Year">
+
+        <select id="movieGenre">
+            <option value="">Select Genre</option>
+            <option>Action</option>
+            <option>Comedy</option>
+            <option>Romance</option>
+            <option>Horror</option>
+            <option>Drama</option>
+            <option>Sci-Fi</option>
+            <option>Thriller</option>
+            <option>Adventure</option>
+            <option>Animation</option>
+        </select>
+
+        <textarea id="movieDescription"
+            placeholder="Movie Description"></textarea>
+
+        <button onclick="addMovie()">Add Movie</button>
+    </div>
+
+    <h3>Movie Collection</h3>
+
+    <input id="searchMovie"
+        placeholder="Search movie..."
+        oninput="displayMovies()">
+
+    <select id="filterGenre" onchange="displayMovies()">
+        <option value="">All Genres</option>
+        <option>Action</option>
+        <option>Comedy</option>
+        <option>Romance</option>
+        <option>Horror</option>
+        <option>Drama</option>
+        <option>Sci-Fi</option>
+        <option>Thriller</option>
+        <option>Adventure</option>
+        <option>Animation</option>
+    </select>
+
+    <div id="movieList" class="grid"></div>
+
+</section>
+
+
+<section id="viewers" class="section hidden">
+
+    <h2>Viewer Registration</h2>
+
+    <div class="form">
+        <input id="viewerName" placeholder="Full Name">
+        <input id="viewerEmail" type="email" placeholder="Email Address">
+
+        <button onclick="addViewer()">Register Viewer</button>
+    </div>
+
+    <h3>Registered Viewers</h3>
+
+    <div id="viewerList"></div>
+
+</section>
+
+
+<section id="reviews" class="section hidden">
+
+    <h2>Movie Reviews and Ratings</h2>
+
+    <div class="form">
+
+        <label>Select Movie</label>
+        <select id="reviewMovie"></select>
+
+        <label>Select Viewer</label>
+        <select id="reviewViewer"></select>
+
+        <label>Rating (1 to 5)</label>
+        <select id="reviewRating">
+            <option value="5">★★★★★ - Excellent</option>
+            <option value="4">★★★★ - Very Good</option>
+            <option value="3">★★★ - Good</option>
+            <option value="2">★★ - Average</option>
+            <option value="1">★ - Poor</option>
+        </select>
+
+        <textarea id="reviewText"
+            placeholder="Write your movie review..."></textarea>
+
+        <button onclick="addReview()">Submit Review</button>
+
+    </div>
+
+    <h3>Community Reviews</h3>
+
+    <div id="duplicateWarning"></div>
+    <div id="reviewList"></div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>© 2026 MovieVerse | Movie Review and Rating System</p>
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
